@@ -1,0 +1,41 @@
+{
+    "nodes": [
+        {
+            "data": {
+                "id": "1",
+                "label": "Individual 1",
+                "sex": "F"
+            }
+        },
+        {
+            "data": {
+                "id": "2",
+                "label": "Individual 2",
+                "sex": "M"
+            }
+        },
+        {
+            "data": {
+                "id": "3",
+                "label": "Individal 3",
+                "sex": "F"
+            }
+        }
+    ],
+    "edges": [
+        {
+            "data": {
+                "id": "a",
+                "source": "1",
+                "target": "2"
+            }
+        },
+        {
+            "data": {
+                "id": "b",
+                "source": "1",
+                "target": "3"
+            }
+        }
+    ]
+}
