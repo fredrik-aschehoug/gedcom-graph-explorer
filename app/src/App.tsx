@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CytoTest } from './CytoTest';
+import { MainContent } from './MainContent';
 
 const Page = styled.div`
   background-color: ${props => props.theme.color.raisinBlack};
@@ -17,6 +17,6 @@ const Navbar = styled.nav`
 export const App = () => (
   <Page>
     <Navbar>GEDCOM Graph Explorer</Navbar>
-    <CytoTest />
+    <MainContent />
   </Page>
 );

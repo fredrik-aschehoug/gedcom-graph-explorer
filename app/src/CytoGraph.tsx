@@ -1,16 +1,21 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Cytoscape from 'cytoscape';
+import Cytoscape, { ElementsDefinition, LayoutOptions } from 'cytoscape';
 import dagre from 'cytoscape-dagre';
 import { theme } from './utils/theme';
 
-const Warpper = styled.div`
+const Wrapper = styled.div`
   background-color: white;
   height: 90%;
   width: 100%;
 `;
 
-const renderCy = data => {
+const layout = {
+  name: 'dagre',
+  nodeDimensionsIncludeLabels: true
+} as LayoutOptions;
+
+const renderCy = (data: ElementsDefinition) => {
   Cytoscape.use(dagre);
   Cytoscape({
     container: document.getElementById('cy'), // container to render in
@@ -51,30 +56,17 @@ const renderCy = data => {
       }
     ],
 
-    layout: {
-      name: 'dagre',
-      nodeDimensionsIncludeLabels: true
-    }
+    layout
 
   });
 };
 
-const getLocalData = async () => {
-  const response = await fetch('output_fredrik.json');
-  if (response.ok) { // if HTTP-status is 200-299
-    // get the response body (the method explained below)
-    const json = await response.json();
-    return json;
-  }
-  return null;
-};
-
-export const CytoTest = () => {
+export const CytoGraph = ({ data }: { data: ElementsDefinition }) => {
   useEffect(() => {
-    const data = getLocalData();
     renderCy(data);
   }, []);
+
   return (
-    <Warpper id="cy" />
+    <Wrapper id="cy" />
   );
 };

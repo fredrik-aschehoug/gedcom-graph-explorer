@@ -1,4 +1,4 @@
-const getUrl = (path: string) => `http://localhost:7071/api/${path}`;
+const getUrl = (path: string) => `/api/${path}`;
 
 const headers = {
   'Content-Type': 'application/json'
@@ -11,7 +11,7 @@ export const getJsonAsync = async (path: string) => {
   return data;
 };
 
-export const postJsonAsync = async (path: string, payload: any) => {
+export const postJsonAsync = async (path: string, payload: unknown) => {
   const options = { method: 'POST', body: JSON.stringify(payload), headers };
   const response = await fetch(getUrl(path), options);
   const data = await response.json();
