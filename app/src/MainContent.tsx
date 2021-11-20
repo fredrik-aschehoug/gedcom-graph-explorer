@@ -6,6 +6,7 @@ import { postJsonAsync } from './utils/client';
 
 export const MainContent = () => {
   const [graph, setGraph] = useState<ElementsDefinition | null>(null);
+
   if (graph) {
     return <CytoGraph data={graph} />;
   }
