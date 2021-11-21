@@ -42,8 +42,6 @@ class Converter:
         node_ids = set()
         edges = list()
 
-        # records = self._parser.records0("INDI")
-
         for i, indi in enumerate(self._parser.records0("INDI")):
             if indi.xref_id not in node_ids:
                 node_data = {

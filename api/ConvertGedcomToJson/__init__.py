@@ -10,18 +10,20 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
         req_body = req.get_json()
     except ValueError:
-        pass
+        return func.HttpResponse(
+            "Invalid request, could not parse the request body.",
+            status_code=500
+        )
     else:
         data = req_body.get('data')
 
     if (isinstance(data, str)):
-        logging.info('Hello world ')
         converter = Converter(data)
         result = converter.convert()
         return func.HttpResponse(json.dumps(result))
 
     else:
         return func.HttpResponse(
-            "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
-            status_code=200
+            "Invalid request, the 'data' property in the request body is not a string.",
+            status_code=500
         )
